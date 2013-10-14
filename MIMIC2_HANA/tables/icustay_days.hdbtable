@@ -1,0 +1,12 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+	{name = "icustay_id"; sqlType = INTEGER; nullable = true;},
+    {name = "subject_id"; sqlType = INTEGER; nullable = true;},
+    {name = "seq"; sqlType = INTEGER; nullable = true;},
+    {name = "begintime"; sqlType = TIMESTAMP; nullable = true;},
+    {name = "endtime"; sqlType = TIMESTAMP; nullable = true;},
+    {name = "first_day_flg"; sqlType = NVARCHAR; nullable = true; length = 1;},
+    {name = "last_day_flg"; sqlType = NVARCHAR; nullable = true; length = 1;}
+];

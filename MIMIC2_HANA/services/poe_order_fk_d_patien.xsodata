@@ -1,0 +1,5 @@
+service namespace "mimic.services" {
+	"MIMIC2"."mimic.tables::poe_order" as "poe_order" navigates ("patient" as "d_patients");
+	"MIMIC2"."mimic.tables::d_patients" as "d_patients";
+	association "patient" principal "poe_order"("subject_id") multiplicity "1" dependent "d_patients"("subject_id") multiplicity "1";
+}

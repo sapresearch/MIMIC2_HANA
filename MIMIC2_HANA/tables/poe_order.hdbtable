@@ -1,0 +1,33 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "poe_id"; sqlType = BIGINT; nullable = false;},
+    {name = "subject_id"; sqlType = INTEGER; nullable = false;},
+    {name = "hadm_id"; sqlType = INTEGER; nullable = false;},
+    {name = "icustay_id"; sqlType = INTEGER; nullable = true;},
+    {name = "start_dt"; sqlType = TIMESTAMP; nullable = true;},
+    {name = "stop_dt"; sqlType = TIMESTAMP; nullable = true;},
+    {name = "enter_dt"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "medication"; sqlType = NVARCHAR; nullable = true; length = 255;},
+    {name = "procedure_type"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "status"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "route"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "frequency"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "dispense_sched"; sqlType = NVARCHAR; nullable = true; length = 255;},
+    {name = "iv_fluid"; sqlType = NVARCHAR; nullable = true; length = 255;},
+    {name = "iv_rate"; sqlType = NVARCHAR; nullable = true; length = 100;},
+    {name = "infusion_type"; sqlType = NVARCHAR; nullable = true; length = 15;},
+    {name = "sliding_scale"; sqlType = NVARCHAR; nullable = true; length = 1;},
+    {name = "doses_per_24hrs"; sqlType = DECIMAL; nullable = true;},
+    {name = "duration"; sqlType = DECIMAL; nullable = true;},
+    {name = "duration_intvl"; sqlType = NVARCHAR; nullable = true; length = 15;},
+    {name = "expiration_val"; sqlType = DECIMAL; nullable = true;},
+    {name = "expiration_unit"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "expiration_dt"; sqlType = TIMESTAMP; nullable = true;},
+    {name = "label_instr"; sqlType = NVARCHAR; nullable = true; length = 1000;},
+    {name = "additional_instr"; sqlType = NVARCHAR; nullable = true; length = 1000;},
+    {name = "md_add_instr"; sqlType = NVARCHAR; nullable = true; length = 4000;},
+    {name = "rnurse_add_instr"; sqlType = NVARCHAR; nullable = true; length = 1000;}
+];
+table.primaryKey.pkcolumns = ["poe_id"];

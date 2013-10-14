@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="TEST" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="TEST"/>
+  <metadata changedAt="2013-08-14 08:59:00.178"/>
+  <attributes>
+    <attribute id="subject_id" key="true">
+      <descriptions defaultDescription="subject_id"/>
+      <keyMapping schemaName="MIMIC2" columnObjectName="mimic.tables::admissions" columnName="subject_id"/>
+    </attribute>
+    <attribute id="admit_dt">
+      <descriptions defaultDescription="admit_dt"/>
+      <keyMapping schemaName="MIMIC2" columnObjectName="mimic.tables::admissions" columnName="admit_dt"/>
+    </attribute>
+    <attribute id="dob">
+      <descriptions defaultDescription="dob"/>
+      <keyMapping schemaName="MIMIC2" columnObjectName="mimic.tables::d_patients" columnName="dob"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="days_between" hidden="false">
+      <descriptions defaultDescription="days_between"/>
+      <keyCalculation datatype="INTEGER" length="10" scale="2">
+        <formula>daysbetween(&quot;dob&quot;,&quot;admit_dt&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="MIMIC2" columnObjectName="mimic.tables::admissions"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="MIMIC2" columnObjectName="mimic.tables::d_patients"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="MIMIC2" columnObjectName="mimic.tables::admissions"/>
+        <rightTable schemaName="MIMIC2" columnObjectName="mimic.tables::d_patients"/>
+        <leftColumns>
+          <columnName>subject_id</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>subject_id</columnName>
+        </rightColumns>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="mimic.tables::admissions" modelObjectNameSpace="MIMIC2" modelObjectType="catalog">
+          <upperLeftCorner x="75" y="31"/>
+        </shape>
+        <shape modelObjectName="mimic.tables::d_patients" modelObjectNameSpace="MIMIC2" modelObjectType="catalog">
+          <upperLeftCorner x="347" y="30"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

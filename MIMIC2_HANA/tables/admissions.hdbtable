@@ -1,0 +1,10 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "hadm_id"; sqlType = INTEGER; nullable = false;},
+    {name = "subject_id"; sqlType = INTEGER; nullable = false;},
+    {name = "admit_dt"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "disch_dt"; sqlType = TIMESTAMP; nullable = false;}
+];
+table.primaryKey.pkcolumns = ["hadm_id"];

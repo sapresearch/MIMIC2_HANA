@@ -1,0 +1,11 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "Basic information for any given patient";
+table.columns = [
+	{name = "subject_id"; sqlType = INTEGER; nullable = false;},
+	{name = "sex"; sqlType = NVARCHAR; nullable = true; length = 1;},
+	{name = "dob"; sqlType = DATE; nullable = false;},
+	{name = "dod"; sqlType = DATE; nullable = true;},
+	{name = "hospital_expire_flg"; sqlType = NVARCHAR; nullable = true; length = 1; defaultValue="N";}
+];
+table.primaryKey.pkcolumns = ["subject_id"];

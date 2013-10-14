@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/i834397/Documents/HANAClient/ngdbc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/i834397/Documents/HANAClient/opencsv-2.3/deploy/opencsv-2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/i834397/Documents/HANAClient/commons-lang3-3.1-bin/commons-lang3-3.1/commons-lang3-3.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

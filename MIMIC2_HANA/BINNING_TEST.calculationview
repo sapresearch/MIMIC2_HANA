@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.2" id="BINNING_TEST" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" calculationScenarioType="TREE_BASED">
+  <origin/>
+  <descriptions/>
+  <metadata changedAt="2013-08-14 09:00:34.197" createdAt="2013-08-14 09:00:34.195"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TEST" type="ATTRIBUTE_VIEW">
+      <descriptions/>
+      <viewAttributes allViewAttributes="true">
+        <viewAttribute datatype="INTEGER" id="subject_id"/>
+        <viewAttribute datatype="TIMESTAMP" id="admit_dt"/>
+        <viewAttribute datatype="DATE" id="dob"/>
+        <viewAttribute datatype="INTEGER" id="days_between"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <resourceUri>/mimic/attributeviews/TEST</resourceUri>
+      <columnObject/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:LScriptView" id="BINNING">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="INTEGER" id="ID"/>
+        <viewAttribute datatype="INTEGER" id="TYPE"/>
+        <viewAttribute datatype="INTEGER" id="PRE_RESULT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input mapAll="true" node="#P_INPUT_DATA_1"/>
+      <definition>
+export Void main(
+	 Table&lt;Int32 &quot;ID&quot;,NullInt32 &quot;days_between&quot;> &quot;P_INPUT_DATA_1&quot; input_data,
+	 Table&lt;Int32 &quot;ID&quot;,Int32 &quot;TYPE&quot;,Int32 &quot;PRE_RESULT&quot;> &amp; result)/* -#--#- UDF START -#--#- */ {
+/* === FUNCTION NODE MARKER -- DO NOT REMOVE === */
+
+
+Table&lt;NullString &quot;Name&quot;,NullInt32 &quot;intArgs&quot;,NullDouble &quot;doubleArgs&quot;,NullString &quot;stringArgs&quot;> pal_params;
+pal_params.&quot;Name&quot;[0z] = NullString(&quot;BINNING_METHOD&quot;);
+pal_params.&quot;intArgs&quot;[0z] = NullInt32(0);
+pal_params.&quot;Name&quot;[1z] = NullString(&quot;SMOOTH_METHOD&quot;);
+pal_params.&quot;intArgs&quot;[1z] = NullInt32(2);
+pal_params.&quot;Name&quot;[2z] = NullString(&quot;BIN_NUMBER&quot;);
+pal_params.&quot;intArgs&quot;[2z] = NullInt32(85);
+pal_params.&quot;Name&quot;[3z] = NullString(&quot;BIN_DISTANCE&quot;);
+pal_params.&quot;intArgs&quot;[3z] = NullInt32(10);
+pal_params.&quot;Name&quot;[4z] = NullString(&quot;SD&quot;);
+pal_params.&quot;intArgs&quot;[4z] = NullInt32(1);
+
+pal::binning(input_data,pal_params,result);
+}
+/* -#--#- UDF END -#--#- */</definition>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="P_INPUT_DATA_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="INTEGER" id="ID"/>
+        <viewAttribute datatype="INTEGER" id="days_between"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#TEST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="subject_id"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="days_between" source="days_between"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="P_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="INTEGER" id="ID"/>
+        <viewAttribute datatype="INTEGER" id="TYPE"/>
+        <viewAttribute datatype="INTEGER" id="PRE_RESULT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#BINNING"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="P_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="ID">
+        <descriptions/>
+        <keyMapping columnObjectName="P_2" columnName="ID"/>
+      </attribute>
+      <attribute id="TYPE">
+        <descriptions/>
+        <keyMapping columnObjectName="P_2" columnName="TYPE"/>
+      </attribute>
+      <attribute id="PRE_RESULT">
+        <descriptions/>
+        <keyMapping columnObjectName="P_2" columnName="PRE_RESULT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

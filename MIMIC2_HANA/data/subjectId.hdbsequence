@@ -1,0 +1,2 @@
+schema = "MIMIC2";
+depends_on_table = "mimic.tables::d_patients";

@@ -1,0 +1,12 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "itemid"; sqlType = INTEGER; nullable = false;},
+    {name = "code"; sqlType = NVARCHAR; nullable = true; length = 10;},
+    {name = "type"; sqlType = NVARCHAR; nullable = true; length = 12;},
+    {name = "category"; sqlType = NVARCHAR; nullable = true; length = 13;},
+    {name = "label"; sqlType = NVARCHAR; nullable = true; length = 100;},
+    {name = "description"; sqlType = NVARCHAR; nullable = true; length = 100;}
+];
+table.primaryKey.pkcolumns = ["itemid"];

@@ -1,0 +1,13 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+	{name = "param1_str"; sqlType = NVARCHAR; nullable = true; length=50;},
+	{name = "param1_num"; sqlType = DECIMAL; nullable = true;},
+	{name = "category"; sqlType = NVARCHAR; nullable = false; length=50;},
+	{name = "param2_str"; sqlType = NVARCHAR; nullable = true; length=50;},
+	{name = "param2_num"; sqlType = DECIMAL; nullable = true;},
+	{name = "order_num"; sqlType = DECIMAL; nullable = true;},
+	{name = "valid_flg"; sqlType = NVARCHAR; nullable = false; length=1;},
+	{name = "comments"; sqlType = NVARCHAR; nullable = true; length=255;}
+];

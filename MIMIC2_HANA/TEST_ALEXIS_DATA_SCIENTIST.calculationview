@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.2" id="TEST_ALEXIS_DATA_SCIENTIST" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" calculationScenarioType="TREE_BASED">
+  <origin/>
+  <descriptions/>
+  <metadata changedAt="2013-08-12 13:37:59.638" createdAt="2013-08-12 13:37:59.635"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="HELLO_IN" type="DATA_BASE_TABLE">
+      <descriptions/>
+      <viewAttributes allViewAttributes="true">
+        <viewAttribute datatype="VARCHAR" id="LETTER" length="1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <columnObject schemaName="SAMPLE_NODE" columnObjectName="HELLO_IN"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:LScriptView" id="Hello_L">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="VARCHAR" id="text" length="1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input mapAll="true" node="#P_inTab_1"/>
+      <definition>
+export Void main(
+	 Table&lt;String &quot;letter&quot;> &quot;P_inTab_1&quot; inTab,
+	 Table&lt;String &quot;text&quot;> &amp; outTab)/* -#--#- UDF START -#--#- */ {
+Column&lt;String> letters = inTab.getColumn&lt;String>(&quot;letter&quot;);&#xD;
+Column&lt;String> text = outTab.getColumn&lt;String>(&quot;text&quot;);&#xD;
+Size row;&#xD;
+Size num_rows = letters.getSize();&#xD;
+String hello;&#xD;
+while (row &lt; num_rows)&#xD;
+{&#xD;
+hello.append(letters[row]);&#xD;
+row = row.next();&#xD;
+}&#xD;
+text[0z]=hello;
+}
+/* -#--#- UDF END -#--#- */</definition>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="P_inTab_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="VARCHAR" id="letter" length="1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HELLO_IN">
+        <mapping xsi:type="Calculation:AttributeMapping" target="letter" source="LETTER"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="P_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="VARCHAR" id="text" length="1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Hello_L"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="P_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="text">
+        <descriptions/>
+        <keyMapping columnObjectName="P_2" columnName="text"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,10 @@
+import from csv file '/home/share/mimic/Definitions/D_CAREGIVERS.txt' into "MIMIC2"."mimic.tables::d_caregivers" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_CHARTITEMS.txt' into "MIMIC2"."mimic.tables::d_chartitems" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_DEMOGRAPHICITEMS.txt' into "MIMIC2"."mimic.tables::d_demographicitems" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_LABITEMS.txt' into "MIMIC2"."mimic.tables::d_labitems" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_PARAMMAP_ITEMS.txt' into "MIMIC2"."mimic.tables::d_parammap_items" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_CAREUNITS.txt' into "MIMIC2"."mimic.tables::d_careunits" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_CODEDITEMS.txt' into "MIMIC2"."mimic.tables::d_codeditems" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_IOITEMS.txt' into "MIMIC2"."mimic.tables::d_ioitems" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/D_MEDITEMS.txt' into "MIMIC2"."mimic.tables::d_meditems" with skip first 1 row
+import from csv file '/home/share/mimic/Definitions/PARAMETER_MAPPING.txt' into "MIMIC2"."mimic.tables::parameter_mapping" with skip first 1 row

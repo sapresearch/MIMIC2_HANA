@@ -1,0 +1,19 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "subject_id"; sqlType = INTEGER; nullable = false;},
+    {name = "hadm_id"; sqlType = INTEGER; nullable = false;},
+    {name = "marital_status_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "marital_status_descr"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "ethnicity_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "ethnicity_descr"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "overall_payor_group_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "overall_payor_group_descr"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "religion_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "religion_descr"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "admission_type_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "admission_type_descr"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "admission_source_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "admission_source_descr"; sqlType = NVARCHAR; nullable = true; length = 50;}
+];

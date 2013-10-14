@@ -1,0 +1,18 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "poe_id"; sqlType = BIGINT; nullable = false;},
+    {name = "drug_type"; sqlType = NVARCHAR; nullable = false; length = 20;},
+    {name = "drug_name"; sqlType = NVARCHAR; nullable = false; length = 100;},
+    {name = "drug_name_generic"; sqlType = NVARCHAR; nullable = true; length = 100;},
+    {name = "prod_strength"; sqlType = NVARCHAR; nullable = true; length = 255;},
+    {name = "form_rx"; sqlType = NVARCHAR; nullable = true; length = 25;},
+    {name = "dose_val_rx"; sqlType = NVARCHAR; nullable = true; length = 100;},
+    {name = "dose_unit_rx"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "form_val_disp"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "form_unit_disp"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "dose_val_disp"; sqlType = DECIMAL; nullable = true;},
+    {name = "dose_unit_disp"; sqlType = NVARCHAR; nullable = true; length = 50;},
+    {name = "dose_range_override"; sqlType = NVARCHAR; nullable = true; length = 2000;}
+];

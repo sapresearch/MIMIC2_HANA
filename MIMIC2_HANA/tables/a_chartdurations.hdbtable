@@ -1,0 +1,15 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "subject_id"; sqlType = INTEGER; nullable = false;},
+    {name = "icustay_id"; sqlType = INTEGER; nullable = true;},
+    {name = "itemid"; sqlType = INTEGER; nullable = false;},
+    {name = "elemid"; sqlType = INTEGER; nullable = false;},
+    {name = "starttime"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "startrealtime"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "endtime"; sqlType = TIMESTAMP; nullable = true;},
+    {name = "cuid"; sqlType = INTEGER; nullable = true;},
+    {name = "duration"; sqlType = DECIMAL; nullable = true;}
+];
+table.primaryKey.pkcolumns = ["subject_id", "itemid", "elemid", "starttime"];

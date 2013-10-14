@@ -1,0 +1,38 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "subject_id"; sqlType = INTEGER; nullable = false;},
+    {name = "hadm_id"; sqlType = INTEGER; nullable = false;},
+    {name = "category"; sqlType = NVARCHAR; nullable = true; length = 10;},
+    {name = "congestive_heart_failure"; sqlType = DECIMAL; nullable = true;},
+    {name = "cardiac_arrhythmias"; sqlType = DECIMAL; nullable = true;},
+    {name = "valvular_disease"; sqlType = DECIMAL; nullable = true;},
+    {name = "pulmonary_circulation"; sqlType = DECIMAL; nullable = true;},
+    {name = "peripheral_vascular"; sqlType = DECIMAL; nullable = true;},
+    {name = "hypertension"; sqlType = DECIMAL; nullable = true;},
+    {name = "paralysis"; sqlType = DECIMAL; nullable = true;},
+    {name = "other_neurological"; sqlType = DECIMAL; nullable = true;},
+    {name = "chronic_pulmonary"; sqlType = DECIMAL; nullable = true;},
+    {name = "diabetes_uncomplicated"; sqlType = DECIMAL; nullable = true;},
+    {name = "diabetes_complicated"; sqlType = DECIMAL; nullable = true;},
+    {name = "hypothyroidism"; sqlType = DECIMAL; nullable = true;},
+    {name = "renal_failure"; sqlType = DECIMAL; nullable = true;},
+    {name = "liver_disease"; sqlType = DECIMAL; nullable = true;},
+    {name = "peptic_ulcer"; sqlType = DECIMAL; nullable = true;},
+    {name = "aids"; sqlType = DECIMAL; nullable = true;},
+    {name = "lymphoma"; sqlType = DECIMAL; nullable = true;},
+    {name = "metastatic_cancer"; sqlType = DECIMAL; nullable = true;},
+    {name = "solid_tumor"; sqlType = DECIMAL; nullable = true;},
+    {name = "rheumatoid_arthritis"; sqlType = DECIMAL; nullable = true;},
+    {name = "coagulopathy"; sqlType = DECIMAL; nullable = true;},
+    {name = "obesity"; sqlType = DECIMAL; nullable = true;},
+    {name = "weight_loss"; sqlType = DECIMAL; nullable = true;},
+    {name = "fluid_electrolyte"; sqlType = DECIMAL; nullable = true;},
+    {name = "blood_loss_anemia"; sqlType = DECIMAL; nullable = true;},
+    {name = "deficiency_anemias"; sqlType = DECIMAL; nullable = true;},
+    {name = "alcohol_abuse"; sqlType = DECIMAL; nullable = true;},
+    {name = "drug_abuse"; sqlType = DECIMAL; nullable = true;},
+    {name = "psychoses"; sqlType = DECIMAL; nullable = true;},
+    {name = "depression"; sqlType = DECIMAL; nullable = true;}
+];

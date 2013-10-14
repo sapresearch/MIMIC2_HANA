@@ -1,0 +1,4 @@
+role mimic.data::mimicuser {
+	catalog schema "MIMIC2": SELECT;
+	application privilege: mimic::Basic;
+}

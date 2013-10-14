@@ -1,0 +1,15 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "subject_id"; sqlType = INTEGER; nullable = true;},
+    {name = "hadm_id"; sqlType = INTEGER; nullable = true;},
+    {name = "charttime"; sqlType = TIMESTAMP; nullable = true;},
+    {name = "spec_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "org_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "isolate_num"; sqlType = DECIMAL; nullable = true;},
+    {name = "ab_itemid"; sqlType = INTEGER; nullable = true;},
+    {name = "dilution_amount"; sqlType = NVARCHAR; nullable = true; length = 72;},
+    {name = "dilution_comparison"; sqlType = NVARCHAR; nullable = true; length = 10;},
+    {name = "interpretation"; sqlType = NVARCHAR; nullable = true; length = 1;}
+];

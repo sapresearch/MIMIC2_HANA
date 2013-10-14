@@ -1,0 +1,13 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "icustay_id"; sqlType = INTEGER; nullable = false;},
+    {name = "subject_id"; sqlType = INTEGER; nullable = false;},
+    {name = "intime"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "outtime"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "los"; sqlType = DECIMAL; nullable = false;},
+    {name = "first_careunit"; sqlType = INTEGER; nullable = true;},
+    {name = "last_careunit"; sqlType = INTEGER; nullable = true;}
+];
+table.primaryKey.pkcolumns = ["icustay_id"];

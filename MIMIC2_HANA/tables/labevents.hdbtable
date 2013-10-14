@@ -1,0 +1,14 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+	{name = "subject_id"; sqlType = INTEGER; nullable = false;},
+	{name = "hadm_id"; sqlType = INTEGER; nullable = true;},
+	{name = "icustay_id"; sqlType = INTEGER; nullable = true;},
+	{name = "itemid"; sqlType = INTEGER; nullable = false;},
+	{name = "charttime"; sqlType = TIMESTAMP; nullable = false;},
+	{name = "value"; sqlType = NVARCHAR; nullable = true; length=100;},
+	{name = "valuenum"; sqlType = DECIMAL; nullable = true;},
+	{name = "flag"; sqlType = NVARCHAR; nullable = true; length=10;},
+	{name = "valueuom"; sqlType = NVARCHAR; nullable = true; length=10;}
+];

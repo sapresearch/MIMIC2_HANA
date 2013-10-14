@@ -1,0 +1,12 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+	{name = "created_dt"; sqlType = TIMESTAMP;},
+	{name = "created_by"; sqlType = NVARCHAR; length = 15; },
+	{name = "updated_dt"; sqlType = TIMESTAMP; },
+	{name = "updated_by"; sqlType = NVARCHAR; length = 15; },
+	{name = "schema_dt"; sqlType = TIMESTAMP; },
+	{name = "version"; sqlType = NVARCHAR; nullable = false; length = 25;},
+	{name = "comments"; sqlType = NVARCHAR; nullable = true; length = 250;}
+];

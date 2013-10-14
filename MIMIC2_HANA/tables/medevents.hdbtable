@@ -1,0 +1,22 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+    {name = "subject_id"; sqlType = INTEGER; nullable = false;},
+    {name = "icustay_id"; sqlType = INTEGER; nullable = true;},
+    {name = "itemid"; sqlType = INTEGER; nullable = false;},
+    {name = "charttime"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "elemid"; sqlType = INTEGER; nullable = false;},
+    {name = "realtime"; sqlType = TIMESTAMP; nullable = false;},
+    {name = "cgid"; sqlType = INTEGER; nullable = true;},
+    {name = "cuid"; sqlType = INTEGER; nullable = true;},
+    {name = "volume"; sqlType = DECIMAL; nullable = true;},
+    {name = "dose"; sqlType = DECIMAL; nullable = true;},
+    {name = "doseuom"; sqlType = NVARCHAR; nullable = true; length = 20;},
+    {name = "solutionid"; sqlType = INTEGER; nullable = true;},
+    {name = "solvolume"; sqlType = DECIMAL; nullable = true;},
+    {name = "solunits"; sqlType = NVARCHAR; nullable = true; length = 20;},
+    {name = "route"; sqlType = NVARCHAR; nullable = true; length = 20;},
+    {name = "stopped"; sqlType = NVARCHAR; nullable = true; length = 20;}
+];
+table.primaryKey.pkcolumns = ["subject_id", "itemid", "elemid"];

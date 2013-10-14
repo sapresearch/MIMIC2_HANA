@@ -1,0 +1,7 @@
+table.schemaName = "MIMIC2";
+table.tableType = COLUMNSTORE;
+table.description = "";
+table.columns = [
+	{name = "category"; sqlType = NVARCHAR; nullable = false; length = 50;},
+	{name = "description"; sqlType = NCLOB; nullable = true;}
+];

@@ -1,0 +1,6 @@
+role mimic.data::mimicadmin 
+extends role mimic.data::mimicuser
+{
+	catalog schema "MIMIC2": SELECT, INSERT, UPDATE, DELETE, DROP, ALTER, EXECUTE, INDEX, TRIGGER, DEBUG, CREATE ANY;
+	application privilege: mimic::Admin;
+}
