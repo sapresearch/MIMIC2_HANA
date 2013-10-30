@@ -4,7 +4,7 @@ from pandas import DataFrame, Series
 import pytz
 from pytz import timezone
 from datetime import datetime
-from fuzzy_adventure.hana import connection
+import connection
 import tarfile
 import os
 from os import listdir
@@ -113,7 +113,7 @@ def insert_definition_files():
 
 if __name__ == '__main__':
     
-    conn = pdbc.connect('DSN=hana; UID=ALEXIS; PWD=Arkham3!')
+    conn = pdbc.connect('DSN=hana_new; UID=SYSTEM; PWD=HANA4ever')
     cursor = conn.cursor() #connection.get_cursor()
 
 
