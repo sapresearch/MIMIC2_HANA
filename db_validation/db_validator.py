@@ -10,6 +10,9 @@ class DB_wrapper():
         self.db_name = db_name
         self.table_names = self.tables()
         self.num_tables = len(self.table_names)
+        #quite a few tables don't have primary keys. Each table in theory has a combo of columns which together make the row unique.
+        #This just assigns each table to which column numbers in theory will identiy rows
+        self.ident_pks={'poe_med': [0, 1, 2], 'noteevents':[2, 4, 9], 'icd9':[1, 2], 'labevents':[2, 3, 4], 'comorbidity_scores':[1], 'microbiologyevents':[1, 2, 3, 6], 'icustay_days':[0, 2], 'demographic_detail':[1], 'icustay_detail':[0]}
 
     def rows(self, table):
         order_key = self.pk(table)
@@ -28,24 +31,18 @@ class DB_wrapper():
     def tables(self):
         #needs schema of MIMIC2
         return [table[2].replace(self.table_prefix, '') for table in set(self.cursor.tables(schema=self.schema).fetchall())]
-    @abstractmethod
-    def pk(self, table):
-        pass
     def row_count(self, table):
-        pk = self.pk(table)
-        if not pk:
-            pk = self.columns(table)[0]
-        return self.cursor.execute(""" select count(distinct %s) from %s """ %(self.format_column(pk), self.table_call(table))).fetchone()
+        return self.cursor.execute(""" select count(*) from %s """ %(self.table_call(table))).fetchone()
     @abstractmethod
     def format_column(self, table):
         pass
     def pk(self, table):
         order_key = self.cursor.primaryKeys(self.table_name(table), schema=self.schema).fetchone()
-        if not order_key:
-            return None
-        else:
-            return order_key[3]
-
+        try:
+            pk = order_key[3]
+        except:
+            pk= None
+        return pk
 
 class HANA_wrapper(DB_wrapper):
     def __init__(self, cursor, db_name, schema_name):
@@ -80,7 +77,14 @@ class DB_validator():
 
         #self.table_count()
         #self.list_no_pks()
-        #self.compareTables()
+        self.compareTables()
+
+    def table_count(self):
+        modcount = self.modeldb.num_tables
+        testcount = self.testdb.num_tables
+        failstr = "TABLE COUNT ERROR: \n modeldb: " + str(modcount) + "\n testdb: " + str(testcount) + "\n\n"
+        #self.list_no_pks()
+        self.compareTables()
 
     def table_count(self):
         modcount = self.modeldb.num_tables
@@ -113,7 +117,7 @@ class DB_validator():
     def compareTables(self):
         #self.table_count()
 
-        for table in self.modeldb.table_names:
+        for table in sorted(self.modeldb.table_names):
             self.table_row_count(table)
 
     def log(self, failstr):
@@ -163,21 +167,13 @@ class DB_validator():
         self.log(failstr)
 
 
-        #don't want to find individual missing rows as it would take a godawful long amount of time
-           #table_pk = self.modeldb.pk(table) 
-
-        #for row, rowindex in enumerate(modrows):
-        #    for col, colindex in enumerate(row):
-        #        assert col == testrows[row][col]
-
 def main():
 
     DB_wrapper.register(HANA_wrapper)
     DB_wrapper.register(PSQL_wrapper)
     hana_db = HANA_wrapper(cursor=pdbc.connect('DSN=hana_new;UID=SYSTEM;PWD=HANA4ever;DATABASE=MIMIC2').cursor(), db_name="mimic", schema_name='MIMIC2')
     psql_db = PSQL_wrapper(cursor=pdbc.connect('DSN=psql_mimic').cursor(), db_name="MIMIC2", schema_name='mimic2v26')
-    test = DB_validator(modeldb=psql_db, testdb=hana_db, failhard=False)
-    test.table_count()
+    test = DB_validator(modeldb=psql_db, testdb=psql_db, failhard=False)
 
 if __name__=="__main__":
         main()
